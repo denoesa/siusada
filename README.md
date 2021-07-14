@@ -2,7 +2,7 @@
 ## _Sistem Informasi UMKM Nusa Penida_
 
 
-SIUSADA is a marketplace for Small and Medium Enterprise (SME) that ran by Nusa Penida's local community.
+SIUSADA is a marketplace for Micro Small and Medium Enterprise (MSME) that ran by Nusa Penida's local community.
 
 
 ## Features
