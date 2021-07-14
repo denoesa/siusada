@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h2 class="text-black">Hi {{user.name}}!! Wellcome back</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ request.user.email }}
+                            <a href="{% url 'account_logout' %}">
+                                <small class="float-right">Logout</small></a>
+                        </h5>
+                        <hr />
+                        <a href="{% url 'staff:products' %}">Products</a>
+                        <hr />
+
+                        <h5 class="card-title">Recent orders</h5>
+                        <div class="site-blocks-table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference No.</th>
+                                        <th>Date</th>
+                                        <th>User</th>
+                                        <th>Amount</th>
+                                        <th>Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                    <tr>
+                                        <td><a
+                                                href="{% url 'shop:order-detail' order.pk %}">#{{ order.reference_number }}</a>
+                                        </td>
+                                        <td>{{ order.ordered_date }}</td>
+                                        <td>{{ order.user.email }}</td>
+                                        <td>${{ order.get_total }}</td>
+                                        <td>{% if order.ordered %}Paid{% else %}Not paid{% endif %}</td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="4">You don't have any order yet</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

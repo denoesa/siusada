@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Checkout{% endblock %}
+{% block content %}
+
+<div class="bg-white border-bottom fixed-top py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a class="card-link" href="{% url 'home' %}">Home</a><span class="mx-2 mb-0">/</span>
+                <a class="card-link" href="{% url 'shop:summary' %}">Cart</a><span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Checkout</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 80px">
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 mb-5">
+                <div class="card p-3">
+                    <h2 class="h3 mb-3 text-black text-center">Billing Details</h2>
+                    <hr />
+                    {{ form|crispy }}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"
+                            href="{% url 'shop:payment' kwargs.pk %}">Proceed to
+                            payment</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 mb-5">
+                <div class="card p-3">
+                    <h2 class="h3 text-black text-center">Your Order</h2>
+                    <div class="card p-3 my-3">
+                        <strong class="mb-3">Summary</strong>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Total Price</th>
+                                </tr>
+                                {% for item in orderitem %}
+                                <tr>
+                                    <td>{{ item.product.title }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>Rp{{ item.get_total_item }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card p-3">
+                        <strong class="mb-3">Total</strong>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>Order Total</th>
+                                    <td>:</td>
+                                    <td><strong class="text-black">
+                                            Rp {{total.price}}
+                                        </strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+
+</div>
+
+{% endblock content %}

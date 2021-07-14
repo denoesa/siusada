@@ -1,0 +1,29 @@
+{% load static %}
+{% load cart_template_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SIUSADA - {% block head_title %}Lapaknya UMKM Nusa Penida{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{% static 'icons/siusada.png' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href=" {% static 'fonts/fontawesome/css/all.min.css' %}" />
+</head>
+
+<body>
+
+    {% block content %}
+
+    {% endblock content %}
+
+
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

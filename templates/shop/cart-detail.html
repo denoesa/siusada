@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block head_title %}Cart Detail{% endblock %}
+{% block content %}
+
+
+<div class="bg-white fixed-top border-bottom py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a class="card-link" href="{% url 'home' %}">Home</a>
+                <span class="mx-2 mb-0">/</span>
+                <a class="card-link" href="{% url 'shop:summary' %}">Cart</a>
+                <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Cart Detail</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container py-3" style="margin-top: 80px">
+
+    {% for item in orderitem %}
+    <div class="card p-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ item.product.image.url }}" class="img-fluid rounded border">
+            </div>
+            <div class="col-md-6">
+                <div class="card table-responsive p-3">
+                    <h2 class="h4 text-black">{{ item.product.title }}</h2>
+                    <table class="table mt-1">
+                        <tr>
+                            <td><strong>Price</strong></td>
+                            <td>:</td>
+                            <td></strong> Rp{{ item.product.get_price }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Quantity</strong></td>
+                            <td>:</td>
+                            <td>
+                                <div class="input-group" style="max-width: 120px;">
+                                    <div class="input-group-prepend">
+                                        <a href="{% url 'shop:decrease-quantity' item.id %}"
+                                            class="btn btn-outline-primary">
+                                            &minus;
+                                        </a>
+                                    </div>
+                                    <input type="text" class="form-control text-center" value="{{ item.quantity }}">
+                                    <div class="input-group-append">
+                                        <a href="{% url 'shop:increase-quantity' item.id %} "
+                                            class="btn btn-outline-primary">
+                                            &plus;
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td>:</td>
+                            <td>
+                                Rp{{ item.get_total_item }}
+                            </td>
+                        </tr>
+                    </table>
+                    <a href="{% url 'shop:remove-from-cart' item.id %}" class="btn btn-danger">Remove</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="card p-3 mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-outline-primary btn-block mb-3" href="{% url 'home' %}">Continue
+                    shopping</a>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h3 class="text-black text-uppercase">Cart Totals</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td>Total</td>
+                                <td>:</td>
+                                <td>Rp{{ total.price }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a class="btn btn-primary btn-block" href="{% url 'shop:checkout' kwargs.pk %}">Proceed to
+                        checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content%}

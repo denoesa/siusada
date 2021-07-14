@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}Cart{% endblock %}
+{% block content %}
+
+
+<div class="bg-white fixed-top border-bottom py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a class="card-link" href="{% url 'home' %}">Home</a>
+                <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Cart</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container py-3" style="margin-top: 80px">
+
+    {% if order.count > 0 %}
+
+    <div class="card p-3">
+        <div class="alert alert-success"> <i class="fas fa-info-circle mr-3"></i> Use the 'Checkout' button to see your
+            product and check them out.</div>
+        <div class="card p-2 mb-2">
+            <div class="table-responsive">
+                <table class="table table-borderless">
+                    <tr>
+                        <th>Shop</th>
+                        <th>Product</th>
+                        <th>Item</th>
+                        <th>Action</th>
+                    </tr>
+
+                    {% for item in order %}
+
+                    <tr>
+                        <td>{{item.product_owner__name}}</td>
+                        <td>{{item.count}}</td>
+                        <td>{{item.countpro}}</td>
+                        <td>
+                            <a class="btn btn-primary"
+                                href=" {% url 'shop:cart-detail' item.product_owner %} ">Checkout</a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 my-3">
+                <a class="btn btn-outline-primary btn-block" href="{% url 'home' %}">Continue
+                    shopping</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="card p-3">
+        There are no items in your cart.
+        <a class="my-3 card-link" href="{% url 'home' %}">Continue shopping</a>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock content %}

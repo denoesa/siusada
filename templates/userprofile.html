@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block head_title %}Profile{% endblock %}
+{% block content %}
+
+<div class="bg-white border-bottom fixed-top py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a class="card-link" href="{% url 'home' %}">Home</a>
+                <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Profile</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 80px">
+    <div class="card p-3">
+        <h3 class="mb-3">Hi, {{user.name}} !!</h3>
+        <hr>
+        <form>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card p-3 mb-3">
+                        <div class="text-center">
+                            {% if user.avatar %}
+                            <img alt="{{user.name}}" src="{{user.avatar.url}}" class="rounded border" width="128"
+                                height="128" />
+                            {% endif %}
+                            <h2 class="my-3"> {{user.name}} </h2>
+                            <a href=" {% url 'customer-profile-update' pk=request.user.id %} "
+                                class="btn btn-primary my-2">Update
+                                Profile</a>
+                            <br>
+                            <a href="{% url 'account_change_password' %}" class="btn btn-primary my-2">
+                                Update Password
+                            </a>
+                            <br>
+                            <a class="btn btn-outline-primary my-2" href="{% url 'account_logout' %}">
+                                Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" value="{{user.name}}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" value="{{user.email}}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input class="form-control" id="phone" value="{{user.phone}}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" value="{{user.user_address}}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Biography</label>
+                            <input type="text" class="form-control" id="bio" value=" {{user.biography}} " disabled>
+                            </input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    <div class="card p-3 my-3">
+        <h5 class="card-title">
+            Your Order
+        </h5>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>Reference No.</td>
+                    <th>Date</td>
+                    <th>Amount</td>
+                    <th>Status</th>
+                </tr>
+                {% for order in object_list %}
+
+                <tr>
+                    <td><a class="card-link" href="{% url 'order-detail' order.pk %}">#{{ order.reference_number }}</a>
+                    </td>
+                    <td>{{ order.checkout_date }}</td>
+                    <td>Rp{{ order.totalpay }}</td>
+                    <td>{% if order.status == False %}Unconfirmed {% else %} Confirmed {% endif %}</td>
+                </tr>
+
+                {% empty %}
+                <tr>
+                    <td colspan="4">You haven't made any orders</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <hr>
+        <nav class="ml-auto" aria-label="Page navigation example">
+            <ul class="pagination p-3">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                {% endif %}
+
+                {%for i in paginator.page_range%}
+
+                <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                    <a class="page-link" href="?page={{i}}">{{i}}</a>
+                </li>
+                {%endfor%}
+
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link"
+                        href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                <li class="page-item"><a class="page-link"
+                        href="?{{ request.GET.urlencode }}&page={{ page_obj.paginator.num_pages }}">Last</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% load static %}
+
+
+<nav id="sidebar" class="sidebar">
+    <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand d-flex align-items-center" href=" {% url 'staff:dashboard' %} ">
+            <img height="30" width="auto" src=" {% static 'icons/siusadatext-white.png' %} " alt="siusada">
+
+        </a>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-header">
+                Pages
+            </li>
+
+            <li class="sidebar-item {% if request.resolver_match.view_name == 'staff:dashboard' %}active{% endif %} ">
+                <a class="sidebar-link" href=" {% url 'staff:dashboard' %} ">
+                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {% if request.resolver_match.view_name == 'staff:profile' %}active{% endif %} ">
+                <a class="sidebar-link" href=" {% url 'staff:profile' %} ">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {% if request.resolver_match.view_name == 'staff:products' %}active{% endif %} ">
+                <a class="sidebar-link" href=" {% url 'staff:products' %} ">
+                    <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Products</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {% if request.resolver_match.view_name == 'staff:order' %}active{% endif %}">
+                <a class="sidebar-link" href=" {% url 'staff:order' %} ">
+                    <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Orders</span>
+                </a>
+            </li>
+
+            <li
+                class="sidebar-item {% if request.resolver_match.view_name == 'staff:confirmed-order' %}active{% endif %}">
+                <a class="sidebar-link" href=" {% url 'staff:confirmed-order' %} ">
+                    <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Confirmed</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href=" {% url 'home' %} ">
+                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Go to homepage</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>

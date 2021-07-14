@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block head_title %}Product Detail{% endblock %}
+{% block content %}
+
+<div class="bg-white fixed-top border-bottom py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a class="card-link" href="{% url 'home' %}">Home</a>
+                <span class="mx-2 mb-0">/</span>
+                <strong>{{product.owner.name}}</strong>
+                <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">{{ product.title }}</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 80px">
+    <div class="row mb-5">
+        <div class="col-md-6 mb-3">
+            <img src="{{ product.image.url }}" class="img-fluid rounded">
+            {% if request.user.is_authenticated and not request.user.is_staff %}
+            <div class="card p-3 my-3">
+                {% if product.available == True %}
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type='submit' class="btn btn-primary float-right">Add to cart</button>
+                </form>
+                {% endif %}</div>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h2 class="text-black">{{ product.title }}</h2>
+                <hr>
+                <h5><span class="badge badge-success">Rp {{ product.price }}</span></h5>
+                <strong class="my-3 alert alert-success p-3 text-center">
+                    <a class="card-link" href="https://api.whatsapp.com/send?phone={{product.owner.phone}}"><i
+                            class="fab fa-whatsapp font-weight-bold mr-2"></i> Chat on
+                        Whatsapp</a>
+                </strong>
+                <div class="alert alert-secondary">
+                    <h5>Description</h5>
+                    <hr>
+                    <p>{{ product.description }}</p>
+                </div>
+
+                <div class="alert alert-secondary">
+                    <h5>Status</h5>
+                    <hr>
+                    <p>{% if product.available == True %} This product is available {% else %} This product is currently
+                        not available
+                        {% endif %}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

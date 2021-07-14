@@ -1,0 +1,139 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+<div class="wrapper">
+	{% include 'dashboard/sidebar.html' %}
+	<div class="main">
+		{% include 'dashboard/navbar.html' %}
+		<main class="content">
+			<div class="container-fluid p-0">
+				<div class="row">
+					<h1 class="h3 mb-3">Order Detail</h1>
+					<div class="w-100">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">
+									Checkout:
+									{% for i in checkouts %}{{i.reference_number}}{% endfor %}
+								</h5>
+								<h6 class="card-subtitle mb-2 text-muted">Checkout on:
+									{% for i in checkouts %}{{i.checkout_date}}{% endfor %}</h6>
+
+								{% for i in checkouts %}
+								<a class="btn btn-primary my-3 card-link"
+									href=" {% url 'staff:confirm-order' i.pk %} ">Confirm
+									Order</a>
+								{% endfor %}
+								<div class="my-3">
+									<h5 class="card-title pt-3">
+										Items
+									</h5>
+								</div>
+								<div class="table-responsive">
+									<table class="table">
+										<tr>
+											<th>Product</th>
+											<th>Price</th>
+											<th>Quantity</th>
+											<th>Total</th>
+										</tr>
+
+										{% for items in itemcheckout %}
+										{% for item in items.real.all %}
+										<tr>
+											<td>{{ item.product.title }}</td>
+											<td>Rp{{ item.product.price }}</td>
+											<td>{{ item.quantity }}</td>
+											<td>Rp{{ item.product_total_price }}</td>
+										</tr>
+										{% endfor %}
+										{% endfor %}
+									</table>
+									<div class="btn btn-outline-primary disabled">
+										<h6 class="my-2">Total amount:
+											{% for i in checkouts %}{{i.totalpay}}{% endfor %}</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<div class="card-title">
+									<h5 class="card-title">
+										Extra Order Data
+									</h5>
+									<div class="table-responsive">
+										<table class="table">
+											<tr>
+												<th>Name</th>
+												<th>Phone</th>
+												<th>Address</th>
+												<th>Request</th>
+												<th>Status</th>
+											</tr>
+											{% for item in customers %}
+											<tr>
+												<td> {{item.name}} </td>
+												<td> {{item.phone}} </td>
+												<td> {{item.address}} </td>
+												<td> {{item.request}} </td>
+												<td> {% if item.status == False %}Unconfirmed {% else %} Confirmed
+													{% endif %} </td>
+											</tr>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div class="card-title">
+									<h5 class="card-title">
+										Payment Data
+									</h5>
+									<div class="table-responsive">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Time</th>
+													<th>Payment Receipt</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for item in payments %}
+												<tr>
+													<td> {{item.timestamp}} </td>
+													<td><a href="{{item.receipt.url}}">View File</a></td>
+												</tr>
+												{%empty%}
+												<tr>
+													<td> No payment data </td>
+												</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</main>
+		{% include 'dashboard/footer.html' %}
+	</div>
+</div>
+
+
+<script src=" {% static 'dashboard/js/app.js' %} "></script>
+
+{% endblock content %}

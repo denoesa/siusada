@@ -1,0 +1,116 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="wrapper">
+	{% include 'dashboard/sidebar.html' %}
+	<div class="main">
+		{% include 'dashboard/navbar.html' %}
+		<main class="content">
+			<div class="container-fluid p-0">
+				<div class="row">
+					<h1 class="h3 mb-3">Products</h1>
+					<div class="ml-auto text-right mt-n1">
+						<nav aria-label="breadcrumb">
+							<a class="btn btn-primary card-link" href="{% url 'staff:product-create' %}">Create
+								Product</a>
+						</nav>
+					</div>
+
+					<div class="w-100">
+						<div class="card">
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Title</th>
+											<th>Price</th>
+											<th>Category</th>
+											<th>Status</th>
+											<th>Edit</th>
+											<th>Delete</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for product in object_list %}
+										<tr>
+											<td>{{product.title}}</td>
+											<td>{{product.price}}</td>
+											<td>{% for list in product.category.all %}
+												<span class="badge badge-secondary">{{list}} </span>
+												{% endfor %}
+											</td>
+											<td>{% if product.available == True %}Available {% else %} Not
+												Available{% endif %}</td>
+											<td class="table-action">
+												<a href=" {{product.get_update_url}} " class="mx-3 card-link">
+													<i class="align-middle" data-feather="edit-2">
+													</i>
+												</a>
+											</td>
+											<td>
+												<a href=" {{ product.get_delete_url }} " class="mx-3 card-link">
+													<i class="align-middle" data-feather="trash">
+													</i>
+												</a>
+											</td>
+										</tr>
+
+										{% empty %}
+										<tr>
+											<td colspan="4">
+												You don't have any product yet
+											</td>
+										</tr>
+										{% endfor %}
+
+									</tbody>
+
+								</table>
+							</div>
+							<hr>
+							<nav class="ml-auto" aria-label="Page navigation example">
+								<ul class="pagination p-3">
+									{% if page_obj.has_previous %}
+									<li class="page-item"><a class="page-link"
+											href="?page={{ page_obj.previous_page_number }}">Previous</a>
+									</li>
+									<li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+									{% endif %}
+
+									{%for i in paginator.page_range%}
+
+									<li class="page-item {% if page_obj.number == i %}active{% endif %}">
+										<a class="page-link" href="?page={{i}}">{{i}}</a>
+									</li>
+
+									{%endfor%}
+
+									{% if page_obj.has_next %}
+									<li class="page-item"><a class="page-link"
+											href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
+									</li>
+									<li class="page-item"><a class="page-link"
+											href="?{{ request.GET.urlencode }}&page={{ page_obj.paginator.num_pages }}">Last</a>
+									</li>
+									{% endif %}
+								</ul>
+							</nav>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		{% include 'dashboard/footer.html' %}
+	</div>
+</div>
+
+
+<script src=" {% static 'dashboard/js/app.js' %} "></script>
+
+{% endblock content %}

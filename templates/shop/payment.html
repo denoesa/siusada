@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}Payment{% endblock %}
+{% block content %}
+
+<div class="bg-white border-bottom fixed-top py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a class="card-link" href="{% url 'home' %}">Home</a><span class="mx-2 mb-0">/</span>
+                <a class="card-link" href="{% url 'shop:summary' %}" class="text-black">Cart</a><span
+                    class="mx-2 mb-0">/</span>
+                <strong class="text-black">Payments</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 80px">
+    <div class="row justify-content-center">
+        <div class="col-md-6 my-5">
+            <div class="card p-3">
+
+                <div class="card p-3">
+                    <strong class="my-3">Payment Address</strong>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>Address</th>
+                                <th>Number</th>
+                                <th>Name</th>
+                            </tr>
+
+                            <tr>
+                                <td>Dana</td>
+                                <td>1234567890</td>
+                                <td>SIUSADA</td>
+                            </tr>
+                            <tr>
+                                <td>OVO</td>
+                                <td>1234567890</td>
+                                <td>SIUSADA</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="alert alert-primary my-3"><strong>Order total: Rp
+                        {% for t in total %}{{t.totalpay}}{% endfor %}</strong></div>
+
+                <div class="card p-3 my-3">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button type="submit" class="btn btn-primary btn-block"
+                            href="{% url 'shop:thanks' kwargs.pk %}">Finish Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

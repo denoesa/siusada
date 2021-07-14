@@ -1,0 +1,140 @@
+{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+
+<div class="wrapper">
+	{% include 'dashboard/sidebar.html' %}
+	<div class="main">
+		{% include 'dashboard/navbar.html' %}
+		<main class="content">
+			<div class="container-fluid p-0">
+				<div class="row">
+					<h1 class="h3 mb-3">Dashboard</h1>
+					<div class="w-100">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="card" style="background-color: #d6adff">
+									<div class="card-body d-flex">
+										<span>
+											<h5 class="card-title mb-4">
+												Item Solds
+											</h5>
+											<h1 class="display-5 mt-1 mb-3 font-weight-bold">
+												{% if solds.total is not None %}
+												{{solds.total}}
+												{% else %}
+												0
+												{% endif %}
+											</h1>
+										</span>
+										<span class="ml-auto">
+											<i class="fas fa-3x fa-user" style="color: #ecd9ff"></i>
+										</span>
+									</div>
+								</div>
+								<div class="card" style="background-color: #8affc2">
+									<div class="card-body d-flex">
+										<span>
+											<h5 class="card-title mb-4">
+												Products
+											</h5>
+											<h1 class="display-5 mt-1 mb-3 font-weight-bold">
+												{{products}}
+											</h1>
+										</span>
+										<span class="ml-auto">
+											<i class="fas fa-3x fa-shopping-bag" style="color: #ccffe4"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="card" style="background-color: #ffd357">
+									<div class="card-body d-flex">
+										<span>
+											<h5 class="card-title mb-4">
+												Earnings (Rp)
+											</h5>
+											<h1 class="display-5 mt-1 mb-3 font-weight-bold">
+												{% if earnings.earn is not None %}
+												{{earnings.earn}}
+												{% else %}
+												0
+												{% endif %}
+											</h1>
+										</span>
+										<span class="ml-auto">
+											<i class="fas fa-3x fa-money-bill" style="color: #fff5d9"></i>
+										</span>
+									</div>
+								</div>
+								<div class="card" style="background-color: #94c6ff">
+									<div class="card-body d-flex">
+										<span>
+											<h5 class="card-title mb-4">
+												Orders
+											</h5>
+											<h1 class="display-5 mt-1 mb-3 font-weight-bold">
+												{{order}}
+											</h1>
+										</span>
+										<span class="ml-auto">
+											<i class="fas fa-3x fa-shopping-cart" style="color: #dbecff"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="card flex-fill">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Recent Orders</h5>
+						</div>
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Reference No.</th>
+										<th>Date</th>
+										<th>Customer</th>
+										<th>Amount</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									{% for orderx in recents %}
+									<tr>
+										<td>
+											<a class="card-link" href="{% url 'staff:order-detail' orderx.pk %}">
+												#{{orderx.reference_number}}
+											</a>
+										</td>
+										<td>{{ orderx.checkout_date }}</td>
+										<td>{{ orderx.user.email }}</td>
+										<td>Rp {{orderx.totalpay}} </td>
+										<td> {% if orderx.status == False %}Unconfirmed {% else %} Confirmed
+											{% endif %} </td>
+									</tr>
+									{% empty %}
+									<tr>
+										<td colspan="4">
+											You don't have any order yet
+										</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		{% include 'dashboard/footer.html' %}
+	</div>
+</div>
+
+<script src=" {% static 'dashboard/js/app.js' %} "></script>
+
+{% endblock content %}

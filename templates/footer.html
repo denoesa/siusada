@@ -1,0 +1,22 @@
+<footer class="border-top py-3" style="background-color: #435979">
+    <div class="container pb-5">
+        <div class="text-center pb-3">
+            <p>
+                <p class="text-white">
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    SIUSADA. All rights reserved
+                </p>
+                <span>
+                    {% if not request.user.is_authenticated %}
+                    <a class="btn btn-success" href=" {% url 'signup:staff-sign-up' %} ">Become a Vendor</a>
+                    <span class="mx-3">|</span>
+                    {% endif %}
+                    <a class="btn btn-outline-success" href=" {% url 'contact' %} ">Contact Us</a>
+                </span>
+            </p>
+        </div>
+    </div>
+</footer>

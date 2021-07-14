@@ -1,0 +1,13 @@
+autopep8
+Django
+django-allauth
+django-crispy-forms
+django-environ
+Pillow
+django-filter
+psycopg2
+gunicorn 
+dj-database-url 
+whitenoise
+django-storages
+dropbox

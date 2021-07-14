@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block head_title %}Order Detail{% endblock %}
+{% block content %}
+
+<div class="bg-white fixed-top border-bottom py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a class="card-link" href="{% url 'home' %}">Home</a>
+                <span class="mx-2 mb-0">/</span>
+                <a class="card-link" href="{% url 'profile' %}">Profile</a>
+                <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Order Details</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 80px">
+    <div class="card p-3">
+        <h5 class="card-title">
+            Checkout: {% for item in order %}{{item.reference_number}}{% endfor %}
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Checkout on: {% for item in order %}{{item.checkout_date}}{% endfor %}
+        </h6>
+
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                {% for item in order %}
+                {% for i in item.real.all %}
+                <tr>
+                    <td>{{ i.product.title }}</td>
+                    <td>{{i.product.price}}</td>
+                    <td>{{ i.quantity }}</td>
+                    <td>Rp{{ i.product_total_price }}</td>
+                </tr>
+                {% endfor %}
+                <tr class="alert-primary">
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td>Rp{{ item.totalpay }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
