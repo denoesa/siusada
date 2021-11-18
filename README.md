@@ -1,5 +1,5 @@
 # SIUSADA
-## _Sistem Informasi UMKM Nusa Penida_
+## _A Marketplace for Micro, Small and Medium Enterprise in Nusa Penida Bali_
 
 
 SIUSADA is a marketplace for Micro Small and Medium Enterprise (MSME) that ran by Nusa Penida's local community.
