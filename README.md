@@ -9,12 +9,13 @@ SIUSADA is a marketplace for Micro Small and Medium Enterprise (MSME) that ran b
 ## Features
 
 - Simple products management
-- Backend based Carts
+- Backend based Cart
 - Search and filter
 - Checkout
 - Simple payment handle
 - Multi Vendor
 - Order Confirmation
+- Paypal and Stripe integration (removed)
 
 
 ## Todos
@@ -24,12 +25,13 @@ SIUSADA is a marketplace for Micro Small and Medium Enterprise (MSME) that ran b
 - Dashboard Order Search
 - Product Rating
 - Shop Rating
-- Comments
+- Comment
 - Social Login
 - Shop Status
-- Saved
-- Invoices pdf
-- User detail profiles
+- Saved product
+- Invoice
+- User detail profile
+
 
 
 
