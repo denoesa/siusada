@@ -1,4 +1,4 @@
-# SIUSADA
+# <img src="https://github.com/sensnerd/siusada/blob/main/static/icons/siusada.png?raw=true" width="26" height="26"> SIUSADA
 ## _A Marketplace for Micro, Small and Medium Enterprise in Nusa Penida Bali_
 
 
