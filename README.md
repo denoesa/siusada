@@ -1,6 +1,4 @@
 # <img src="https://github.com/sensnerd/siusada/blob/main/static/icons/siusada.png?raw=true" width="26" height="26"> SIUSADA
-## _A Marketplace for Micro, Small and Medium Enterprise in Nusa Penida Bali_
-
 
 SIUSADA is a simpple marketplace for Micro Small and Medium Enterprise (MSME) that ran by Nusa Penida's local community.
 
