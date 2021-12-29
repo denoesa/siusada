@@ -2,6 +2,8 @@
 
 SIUSADA is a simpple marketplace for Micro Small and Medium Enterprise (MSME) that ran by Nusa Penida's local community.
 
+[![CircleCI](https://circleci.com/gh/sensnerd/siusada/tree/main.svg?style=svg)](https://circleci.com/gh/sensnerd/siusada/tree/main)
+
 ## Features
 
 - Simple products management
