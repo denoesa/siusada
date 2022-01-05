@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "build"
-          command: "pip install -r requirements.txt && python3 manage.py runserver"
+          command: "pip3 install -r requirements.txt && python3 manage.py runserver"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
