@@ -2,6 +2,8 @@
 
 SIUSADA is a simpple marketplace for Micro Small and Medium Enterprise (MSME) that ran by Nusa Penida's local community.
 
+[![CodeQL](https://github.com/sensnerd/siusada/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/sensnerd/siusada/actions/workflows/codeql-analysis.yml)
+
 ## Features
 
 - Simple products management
