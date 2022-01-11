@@ -14,7 +14,7 @@ SIUSADA is a simpple marketplace for Micro Small and Medium Enterprise (MSME) th
 - Multi Vendor
 - Order Confirmation
 - Paypal and Stripe integration (removed)
-- Currently it uses dropbox as filestorage ( and it makes SIUSADA running so slow at the first run :/ )
+- Currently it uses dropbox as filestorage
 
 
 ## Todos
