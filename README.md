@@ -4,33 +4,7 @@ SIUSADA is a simpple marketplace for Micro Small and Medium Enterprise (MSME) th
 
 [![CodeQL](https://github.com/sensnerd/siusada/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/sensnerd/siusada/actions/workflows/codeql-analysis.yml)
 
-## Features
 
-- Simple products management
-- Backend based Cart
-- Search and filter
-- Checkout
-- Simple payment handle
-- Multi Vendor
-- Order Confirmation
-- Paypal and Stripe integration (removed)
-- Currently it uses dropbox as filestorage
-
-
-## Todos
-
-- Moving back to use whitenoise or google cloud or amazon s3
-- Vendor Profile and Search
-- Dashboard Product Search
-- Dashboard Order Search
-- Product Rating
-- Shop Rating
-- Comment
-- Social Login
-- Shop Status
-- Saved product
-- Invoice
-- User detail profile
 
 
 
