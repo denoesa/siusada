@@ -5,7 +5,7 @@ django-crispy-forms
 django-environ
 Pillow
 django-filter
-psycopg2
+psycopg2-binary
 gunicorn 
 dj-database-url 
 whitenoise

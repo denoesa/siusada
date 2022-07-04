@@ -92,3 +92,4 @@ db.sqlite3
 .env
 ecom/*.env
 ecom/.env
+static-root/

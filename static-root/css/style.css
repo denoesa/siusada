@@ -1,0 +1,44 @@
+body {
+	background-color: #ebeef5;
+}
+
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1300px;
+	}
+}
+
+.card {
+	border-radius: .75rem;
+}
+
+.card-img,
+.card-img-top {
+	border-top-left-radius: .75rem;
+	border-top-right-radius: .75rem;
+}
+
+.btn {
+	border-radius: .50rem;
+}
+
+.form-control {
+	border-radius: .50rem;
+}
+
+.alert {
+	border-radius: .50rem;
+}
+
+.badge {
+	border-radius: .50rem;
+	padding: .375em .5em;
+}
+
+.rounded {
+	border-radius: .75rem !important;
+}
+
+.rounded-avatar {
+	border-radius: .50rem !important;
+}

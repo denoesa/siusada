@@ -76,7 +76,7 @@ DATABASES = {
         'NAME': env('POSTGRESDB'),
         'USER': env('POSTGRESUSER'),
         'PASSWORD': env('POSTGRESPASS'),
-        'HOST': '127.0.0.1',
+        'HOST': '172.17.0.1',
         'PORT': '5432',
     }
 }
@@ -128,18 +128,17 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
 
 MEDIA_URL = "/media/"
-
 MEDIA_ROOT = os.path.join(BASE_DIR, "media-root")
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = env('DTOKEN')
-DROPBOX_TIMEOUT = 10000
+# DEFAULT_FILE_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# DROPBOX_OAUTH2_TOKEN = env('DTOKEN')
+# DROPBOX_TIMEOUT = 10000
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -150,5 +149,5 @@ EMAIL_HOST_PASSWORD = env('EPASS')
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
-prod_db = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# prod_db = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
