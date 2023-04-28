@@ -232,11 +232,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:07e6433f263c3839939cfabeb6d7557841e0419e47759a7b7d37f6d44d40adcb",
-                "sha256:27cb08fa6458c1eff8b97c4c2d03774646fb26feeaa4587dca10c49e6d4fc6a3"
+                "sha256:2c2f73c16b11cb272c6d5e3b063f0d1be06f378d8dc6005fbe8542565db659cc",
+                "sha256:4496eb4f65071578b703fdc6e6f29302553c7440e3f77baf4cefa4a4e091fc3d"
             ],
             "index": "pypi",
-            "version": "==4.0.8"
+            "version": "==4.0.10"
         },
         "django-allauth": {
             "hashes": [
@@ -484,11 +484,11 @@
         },
         "requests": {
             "hashes": [
-                "sha256:64299f4909223da747622c030b781c0d7811e359c37124b4bd368fb8c6518baa",
-                "sha256:98b1b2782e3c6c4904938b84c0eb932721069dfdb9134313beff7c83c2df24bf"
+                "sha256:e8f3c9be120d3333921d213eef078af392fba3933ab7ed2d1cba3b56f2568c3b",
+                "sha256:f2e34a75f4749019bb0e3effb66683630e4ffeaf75819fb51bebef1bf5aef059"
             ],
-            "markers": "python_version >= '3.7' and python_version < '4'",
-            "version": "==2.28.2"
+            "markers": "python_version >= '3.7'",
+            "version": "==2.29.0"
         },
         "requests-oauthlib": {
             "hashes": [
@@ -500,11 +500,11 @@
         },
         "setuptools": {
             "hashes": [
-                "sha256:6f0839fbdb7e3cfef1fc38d7954f5c1c26bf4eebb155a55c9bf8faf997b9fb67",
-                "sha256:bb16732e8eb928922eabaa022f881ae2b7cdcfaf9993ef1f5e841a96d32b8e0c"
+                "sha256:23aaf86b85ca52ceb801d32703f12d77517b2556af839621c641fca11287952b",
+                "sha256:f104fa03692a2602fa0fec6c6a9e63b6c8a968de13e17c026957dd1f53d80990"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==67.7.1"
+            "version": "==67.7.2"
         },
         "six": {
             "hashes": [
@@ -519,7 +519,7 @@
                 "sha256:5430a4fe2ac7d0f93e66f1efc6e1338a41884b7ddf2a350cedd20ccc4d9d28f3",
                 "sha256:d446183e84b8349fa3061f0fe7f06ca94ba65b426946ffebe6e3e8295332420c"
             ],
-            "index": "pypi",
+            "markers": "python_version >= '3.5'",
             "version": "==0.4.4"
         },
         "stone": {
