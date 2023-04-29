@@ -4,6 +4,9 @@ SIUSADA is a simple marketplace for Micro Small and Medium Enterprise (MSME) tha
 
 [![CodeQL](https://github.com/sensnerd/siusada/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/sensnerd/siusada/actions/workflows/codeql-analysis.yml)
 
+<hr>
+
+This application is created to complete my undergraduate education in Information System at Stikom Bali (2021).
 
 
 
